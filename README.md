@@ -27,7 +27,7 @@ First of all, we have to define our nginx [deployment on k8s](https://kubernetes
     - the Pods are labeled `app: nginx` using the `.metadata.labels field;
     - the Pod template's specification, or `.template.spec` field, indicates that the Pods run one container, nginx, which runs the nginx [Docker Hub](https://hub.docker.com/_/nginx) image with the stated version;
     - one container is created and named `nginx` using the `.spec.template.spec.containers[0].name` field
-    - nginx container is exposed through port 80 only
+    - nginx container is exposed through port 80 only.
 
 Now run `kubectl get deployments` to check if the deployment was created; after a few seconds (retry meanwhile), you should see two replicas in `READY` state. 
 
@@ -65,7 +65,7 @@ ReplicaSet output shows the following fields:
   - `DESIRED` displays the desired number of replicas of the application, which you define when you create the Deployment. This is the desired state.
   - `CURRENT` displays how many replicas are currently running.
   - `READY` displays how many replicas of the application are available to your users.
-  - `AGE` displays the amount of time that the application has been running
+  - `AGE` displays the amount of time that the application has been running.
 
 Notice that the name of the ReplicaSet is always formatted as [DEPLOYMENT-NAME]-[RANDOM-STRING]. The random string is randomly generated and uses the pod-template-hash as a seed.
 
@@ -77,7 +77,6 @@ nginx-deployment-75ddd4d4b4-s298s   1/1     Running   0          17s
 ```
 
 To get Pods IPs, enter `kubectl get pods -l 'app=nginx' -o wide | awk {'print $1" " $3 " " $6'} | column -t`; the output should be similar to:
-
 ```
 NAME                               READY   STATUS    RESTARTS   AGE
 nginx-deployment-7b446869f-44lv8   1/1     Running   0          2m11s
@@ -96,7 +95,6 @@ nginx-deployment-7b446869f-w4d4q   1/1     Running   0          3m40s   app=ngin
 You can scale a Deployment by using the following command: `kubectl scale deployment.v1.apps/nginx-deployment --replicas=3`
 
 The output is similar to:
-
 ```
 deployment.apps/nginx-deployment scaled
 ```
@@ -129,7 +127,6 @@ More specifically:
 Run `kubectl get pods` to show the new Pods.
 
 The command `kubectl describe deployments` gives more details about how the change was applied. The output should be similar to:
-
 ```
 Name:                   nginx-deployment
 Namespace:              default
@@ -196,7 +193,6 @@ Run the following command: `kubectl create -f nginx_loadbalancer.yaml`. The outp
 To get information about nginx-service, run the following command: `kubectl get service/nginx-service |  awk {'print $1" " $2 " " $4 " " $5'} | column -t`.
 
 The output is similar to:
-
 ```
 NAME           TYPE          EXTERNAL-IP                                                                 PORT(S)
 nginx-service  LoadBalancer  *****.eu-central-1.elb.amazonaws.com  80:30645/TCP
@@ -205,7 +201,6 @@ nginx-service  LoadBalancer  *****.eu-central-1.elb.amazonaws.com  80:30645/TCP
 To verify that you can access the load balancer externally, run the following command: `curl -silent *****.eu-central-1.elb.amazonaws.com:80`, where the `*****.eu-central-1.elb.amazonaws.com:80` is the "External IP" portion of the previous command output.
 
 If everything is ok, you should see the contents of the Nginx welcome page.
-
 ```
 <!DOCTYPE html>
 <html>
