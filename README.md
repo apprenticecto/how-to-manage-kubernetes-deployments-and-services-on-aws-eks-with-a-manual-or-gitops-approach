@@ -3,6 +3,7 @@
 ![GitHub license](https://img.shields.io/badge/license-MIT-informational)
 ![GitHub version](https://img.shields.io/badge/EKS%20cluster-v1.18-success)
 ![GitHub version](https://img.shields.io/badge/local__machine__OS-OSX-blue)
+![CD_EKS](https://github.com/apprenticecto/how-to-deploy-an-application-and-create-service-on-aws-eks-kubernetes-cluster-with-manual-and-gitops/workflows/CD_EKS/badge.svg?branch=master)
 
 This repo shows how to deploy and modify the application [nginx](https://www.nginx.com/) on an [AWS EKS Kubernetes cluster](https://github.com/apprenticecto/how-to-create-a-kubernetes-cluster-on-aws-eks-with-terraform) and create a Service, both using a (preferred) GitOps based approach and manually.
 
